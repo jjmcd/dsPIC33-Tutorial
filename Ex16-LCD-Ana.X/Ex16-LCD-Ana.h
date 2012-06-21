@@ -15,8 +15,13 @@
 extern "C" {
 #endif
 
-    //! Initialization for Ex16-LCD-Ana
-    void Initialize( void );
+//! Dirty flag - if non-zero display is updated
+EXTERN int dirty;
+//! Current message number to display
+EXTERN int message;
+
+//! Initialization for Ex16-LCD-Ana
+void Initialize( void );
 
 
 #ifdef	__cplusplus
