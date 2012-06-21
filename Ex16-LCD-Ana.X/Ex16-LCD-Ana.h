@@ -19,6 +19,10 @@ extern "C" {
 EXTERN int dirty;
 //! Current message number to display
 EXTERN int message;
+//! Value from the A/D converter
+EXTERN unsigned int potValue;
+//! Remember whether analog value has been read
+EXTERN unsigned int analogRead;
 
 //! Initialization for Ex16-LCD-Ana
 void Initialize( void );

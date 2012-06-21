@@ -43,6 +43,9 @@
 
 #endif
 
+#include <stdio.h>
+
+
 /*  This is cheating
  *
  * This is sort of a trick.  Global variables must be defined once,
@@ -81,7 +84,7 @@ char szMessage[4][17] =
 };
 
 //! Mainline for Ex16-LCD-Ana
-/*! Blink two LEDs and display a number of messages on the LCD
+/*! Display a selected message and analog value on the LCD
  *
  * Pseudocode:
  * \code
@@ -89,19 +92,29 @@ char szMessage[4][17] =
  *   Clear the LCD display
  *   Delay one dirty flag cycle
  *   Display a welcome message
+ *   Wait until ready to clear display
  *   do forever
  *     if the dirty flag is set
  *       clear the dirty flag
  *       clear the display
  *       display the current message
  *       increment the message number
- *       display the message number
  *       if we are at the end of messages
  *         point to the first message
+ *       Set oldValue to impossible value
+ *     if a new analog value is available
+ *       remember we read the value
+ *       if the value has changed enough to matter
+ *         Set oldValue to potValue
+ *         Create a string containing voltage and percentage
+ *         display the string on the second line
  * \endcode
  */
 int main(void)
 {
+    //! Remember previous analog value
+    int oldValue;
+
     // Initialize ports and variables
     Initialize();
 
@@ -117,6 +130,10 @@ int main(void)
     // Display a friendly welcome mesage
     LCDputs("In Principio    erat Verbum ");
 
+    //Hold off initial analog display until ready to clear welcome message
+    while ( !dirty )
+        ;
+
     while (1)
     {
         // If the message needs to be updated
@@ -130,14 +147,35 @@ int main(void)
             LCDputs(szMessage[message]);
             // Point to the next message
             message++;
-            // Position cursor to the middle of line 2
-            LCDposition( 0x40+5);
-            // Display the message number
-            LCDletter(0x30+message );
             // If we are at the end of the messages
             if ( message > 3 )
                 // point back to the firest message
                 message = 0;
+            // Force display of analog
+            oldValue = 10000;
+        }
+        if ( analogRead )
+        {
+            // Work string for display
+            char szValue[16];
+
+            // Remember we read the analog
+            analogRead = 0;
+            
+            // Check enough difference to display
+            // (to prevent jitter in the last digit)
+            if ( abs( oldValue-potValue ) > 10 )
+            {
+                // Remember current value
+                oldValue = potValue;
+                // Place the voltage and percentage into the string
+                sprintf(szValue,"%5.3fV  %5.2f%%",
+                        3.3*(float)potValue/4096.0,
+                        100.0*(float)potValue/4096.0 );
+                // Position to the second line and write string to LCD
+                LCDposition( 0x40+1 );
+                LCDputs(szValue);
+            }
         }
         
     }

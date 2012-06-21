@@ -34,6 +34,7 @@
  * \li Sets the processor clock to 40 MHz
  * \li Initializes the ports
  * \li Initializes timer 6
+ * \li Initialize the A/D converter
  * \li Initializes the dirty flag and message number
  */
 void Initialize( void )
@@ -73,7 +74,7 @@ void Initialize( void )
     //   Timer 6 will increment every 128 instruction cycles
     //   Once the count reaches 50,000, the timer 6 interrupt will fire
     //   and the count will be reset
-    PR6 = 50000;             // Timer 6 counter to 50,000
+    PR6 = 50000;            // Timer 6 counter to 50,000
     TMR6 = 0;               // Clear timer 6
     T6CON = 0x8030;         // 1:256 prescale, timer on, Clock Fcy
     IEC2bits.T6IE = 1;      // Enable Timer 6 interrupt
@@ -81,8 +82,36 @@ void Initialize( void )
     // Initialize the LCD
     LCDinit();
 
+    // Initialize ADC
+    /* set port configuration here */
+    AD1PCFGLbits.PCFG4 = 0;         // ensure AN4/RB4 is analog (Temp Sensor)
+    AD1PCFGLbits.PCFG5 = 0;         // ensure AN5/RB5 is analog (Analog Pot)
+    /* set channel scanning here, auto sampling and convert,
+       with default read-format mode */
+    AD1CON1 = 0x00E4;
+    /* select 12-bit, 1 channel ADC operation */
+    AD1CON1bits.AD12B = 1;
+    /* No channel scan for CH0+, Use MUX A,
+       SMPI = 1 per interrupt, Vref = AVdd/AVss */
+    AD1CON2 = 0x0000;
+    /* Set Samples and bit conversion time */
+    AD1CON3 = 0x032F;
+    /* set channel scanning here for AN4 and AN5 */
+    AD1CSSL = 0x0000;
+    /* channel select AN5/RB5 */
+    AD1CHS0 = 0x0005;
+    /* reset ADC interrupt flag */
+    IFS0bits.AD1IF = 0;
+    /* enable ADC interrupts */
+    IEC0bits.AD1IE = 1;
+     /* turn on ADC module */
+    AD1CON1bits.ADON = 1;
+
+
+
     // Initialize global variables
     dirty = 0;              // Message dirty flag
     message = 0;            // Current message number
+    analogRead = 0;         // Set to A/D not read
 
 }

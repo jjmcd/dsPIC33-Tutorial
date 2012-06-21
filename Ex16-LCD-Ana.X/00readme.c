@@ -3,9 +3,11 @@
  * \brief Introduction
  *
  * This project toggles the LEDs on the timer and displays multiple
- * messages on the LCD.
+ * messages on the first line of the LCD.  The potentiometer on the
+ * Explorer 16 is read, and the value is displayed on the second
+ * line, in both a voltage and percentage.
  *
- * Unlike the earlier incarnation, the LCD routines are no longer included
+ * Unlike the initial incarnations, the LCD routines are no longer included
  * in the project but instead are in a separate library.  In this way those
  * routines may be used by other projects by simply referencing the
  * library and header file in the new project.
@@ -74,7 +76,7 @@
  * \dot
  * digraph mainflo
  * {
- *    size="2.0,2.0";
+ *    size="4.0,2.0";
  *    label="Mainline flow chart"
  *    fontname="Helvetica-Bold";
  *
@@ -83,20 +85,30 @@
  *             fontname="Helvetica"];
  *    "if (dirty)" [shape="diamond"];
  *    "if(message>3)" [shape="diamond"];
+ *    "if(analogRead)" [shape="diamond"];
+ *    "if(different)" [shape="diamond"];
  *    "while(1)" [shape="trapezium"];
- *     Initialize->"Clear LCD";
- *     "Clear LCD"->"Wait";
- *     "Wait"->"Welcome Message";
- *     "Welcome Message"->"while(1)";
- *     "while(1)"->"if (dirty)";
- *       "if (dirty)"->"while(1)" [label="no"];
- *       "if (dirty)"->"clear dirty" [label="yes"];
- *         "clear dirty"->"show message";
- *         "show message"->"next message";
- *         "next message"->"if(message>3)";
- *         "if(message>3)"->"message=0" [label="yes"];
- *         "if(message>3)"->"while(1)" [label="no"];
- *           "message=0"->"while(1)";
+ *     Initialize -> "Clear LCD";
+ *     "Clear LCD" -> "Wait";
+ *     "Wait" -> "Welcome Message";
+ *     "Welcome Message" -> "while(1)";
+ *     "while(1)" -> "if (dirty)";
+ *       "if (dirty)" -> "if(analogRead)" [label="no"];
+ *       "if (dirty)" -> "clear dirty" [label="yes"];
+ *         "clear dirty" -> "show message";
+ *         "show message" -> "next message";
+ *         "next message" -> "if(message>3)";
+ *         "if(message>3)" -> "message=0" [label="yes"];
+ *         "if(message>3)" -> "if(analogRead)" [label="no"];
+ *           "message=0" -> "if(analogRead)";
+ *     "if(analogRead)" -> "clear AnalogRead" [label="yes"];
+ *     "if(analogRead)" -> "while(1)" [label="no"];
+ *     "clear AnalogRead" -> "if(different)";
+ *     "if(different)" -> "while(1)" [label="no"];
+ *     "if(different)" -> "Remember potValue" [label="yes"];
+ *     "Remember potValue" -> "Create string";
+ *     "Create string" -> "Display string";
+ *     "Display string" -> "while(1)";
  * }
  * \enddot
  *
