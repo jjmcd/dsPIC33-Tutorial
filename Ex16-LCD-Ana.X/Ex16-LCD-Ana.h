@@ -15,6 +15,8 @@
 extern "C" {
 #endif
 
+#include <stdbool.h>
+
 //! Dirty flag - if non-zero display is updated
 EXTERN int dirty;
 //! Current message number to display
@@ -23,6 +25,17 @@ EXTERN int message;
 EXTERN unsigned int potValue;
 //! Remember whether analog value has been read
 EXTERN unsigned int analogRead;
+//! Indicate whether to display text message
+EXTERN bool doText;
+
+// Macros for various devices
+//! Leftmost LED latch
+#define LED8 LATAbits.LATA7
+//! Next to left LED latch
+#define LED7 LATAbits.LATA6
+//! Leftmost pushbutton
+#define PB3 PORTDbits.RD6
+
 
 //! Initialization for Ex16-LCD-Ana
 void Initialize( void );

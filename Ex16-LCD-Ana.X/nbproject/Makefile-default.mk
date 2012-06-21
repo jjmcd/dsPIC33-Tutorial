@@ -41,11 +41,11 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/Initialize.o ${OBJECTDIR}/Tmr6Interrupt.o ${OBJECTDIR}/00readme.o ${OBJECTDIR}/ADC1Interrupt.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/Initialize.o.d ${OBJECTDIR}/Tmr6Interrupt.o.d ${OBJECTDIR}/00readme.o.d ${OBJECTDIR}/ADC1Interrupt.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/Initialize.o ${OBJECTDIR}/Tmr6Interrupt.o ${OBJECTDIR}/00readme.o ${OBJECTDIR}/ADC1Interrupt.o ${OBJECTDIR}/Tmr5Interrupt.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/Initialize.o.d ${OBJECTDIR}/Tmr6Interrupt.o.d ${OBJECTDIR}/00readme.o.d ${OBJECTDIR}/ADC1Interrupt.o.d ${OBJECTDIR}/Tmr5Interrupt.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/Initialize.o ${OBJECTDIR}/Tmr6Interrupt.o ${OBJECTDIR}/00readme.o ${OBJECTDIR}/ADC1Interrupt.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/Initialize.o ${OBJECTDIR}/Tmr6Interrupt.o ${OBJECTDIR}/00readme.o ${OBJECTDIR}/ADC1Interrupt.o ${OBJECTDIR}/Tmr5Interrupt.o
 
 
 CFLAGS=
@@ -111,6 +111,12 @@ ${OBJECTDIR}/ADC1Interrupt.o: ADC1Interrupt.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/ADC1Interrupt.o.ok ${OBJECTDIR}/ADC1Interrupt.o.err 
 	@${FIXDEPS} "${OBJECTDIR}/ADC1Interrupt.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ADC1Interrupt.o.d" -o ${OBJECTDIR}/ADC1Interrupt.o ADC1Interrupt.c  
 	
+${OBJECTDIR}/Tmr5Interrupt.o: Tmr5Interrupt.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/Tmr5Interrupt.o.d 
+	@${RM} ${OBJECTDIR}/Tmr5Interrupt.o.ok ${OBJECTDIR}/Tmr5Interrupt.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/Tmr5Interrupt.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Tmr5Interrupt.o.d" -o ${OBJECTDIR}/Tmr5Interrupt.o Tmr5Interrupt.c  
+	
 else
 ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
@@ -141,6 +147,12 @@ ${OBJECTDIR}/ADC1Interrupt.o: ADC1Interrupt.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/ADC1Interrupt.o.d 
 	@${RM} ${OBJECTDIR}/ADC1Interrupt.o.ok ${OBJECTDIR}/ADC1Interrupt.o.err 
 	@${FIXDEPS} "${OBJECTDIR}/ADC1Interrupt.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE)  -g -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ADC1Interrupt.o.d" -o ${OBJECTDIR}/ADC1Interrupt.o ADC1Interrupt.c  
+	
+${OBJECTDIR}/Tmr5Interrupt.o: Tmr5Interrupt.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/Tmr5Interrupt.o.d 
+	@${RM} ${OBJECTDIR}/Tmr5Interrupt.o.ok ${OBJECTDIR}/Tmr5Interrupt.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/Tmr5Interrupt.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE)  -g -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Tmr5Interrupt.o.d" -o ${OBJECTDIR}/Tmr5Interrupt.o Tmr5Interrupt.c  
 	
 endif
 

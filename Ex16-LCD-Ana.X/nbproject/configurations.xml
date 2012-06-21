@@ -19,6 +19,7 @@
       <itemPath>Tmr6Interrupt.c</itemPath>
       <itemPath>00readme.c</itemPath>
       <itemPath>ADC1Interrupt.c</itemPath>
+      <itemPath>Tmr5Interrupt.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

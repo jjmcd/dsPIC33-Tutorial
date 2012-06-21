@@ -9,6 +9,8 @@
  * A second line of the display contains the message number,
  * to demonstrate LCD cursor positioning.
  *
+ * Pressing S3 toggles the first line of the display on and off.
+ *
  * File:   main.c
  * Author: jjmcd
  *
@@ -75,12 +77,17 @@ _FPOR( FPWRT_PWR64 );
 _FICD( ICS_PGD1 & JTAGEN_OFF );
 
 //! Table of messages to be displayed
-char szMessage[4][17] =
+char szMessage[9][17] =
 {
-    "Message One     ",
-    "msg num 2       ",
-    "Number three    ",
-    "I am number four"
+    " Twas brillig,  ",
+    " and the slithy ",
+    "toves, did gyre ",
+    " and gimble in  ",
+    "   the wabe:    ",
+    " All mimsy were ",
+    " the borogoves, ",
+    "  And the mome  ",
+    "raths outgrabe. "
 };
 
 //! Mainline for Ex16-LCD-Ana
@@ -97,10 +104,11 @@ char szMessage[4][17] =
  *     if the dirty flag is set
  *       clear the dirty flag
  *       clear the display
- *       display the current message
- *       increment the message number
- *       if we are at the end of messages
- *         point to the first message
+ *       if doText is true
+ *         display the current message
+ *         increment the message number
+ *         if we are at the end of messages
+ *           point to the first message
  *       Set oldValue to impossible value
  *     if a new analog value is available
  *       remember we read the value
@@ -128,7 +136,7 @@ int main(void)
     dirty = 0;
 
     // Display a friendly welcome mesage
-    LCDputs("In Principio    erat Verbum ");
+    LCDputs(" To disable top  line press S3 ");
 
     //Hold off initial analog display until ready to clear welcome message
     while ( !dirty )
@@ -143,14 +151,17 @@ int main(void)
             dirty = 0;
             // Clear the display
             LCDclear();
-            // Display the current message
-            LCDputs(szMessage[message]);
-            // Point to the next message
-            message++;
-            // If we are at the end of the messages
-            if ( message > 3 )
-                // point back to the firest message
-                message = 0;
+            if ( doText )
+            {
+                // Display the current message
+                LCDputs(szMessage[message]);
+                // Point to the next message
+                message++;
+                // If we are at the end of the messages
+                if ( message > 8 )
+                    // point back to the firest message
+                    message = 0;
+            }
             // Force display of analog
             oldValue = 10000;
         }
@@ -170,8 +181,8 @@ int main(void)
                 oldValue = potValue;
                 // Place the voltage and percentage into the string
                 sprintf(szValue,"%5.3fV  %5.2f%%",
-                        3.3*(float)potValue/4096.0,
-                        100.0*(float)potValue/4096.0 );
+                        3.3*(float)potValue/4095.0,
+                        100.0*(float)potValue/4095.0 );
                 // Position to the second line and write string to LCD
                 LCDposition( 0x40+1 );
                 LCDputs(szValue);

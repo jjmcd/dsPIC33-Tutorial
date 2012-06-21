@@ -7,10 +7,9 @@
  * Explorer 16 is read, and the value is displayed on the second
  * line, in both a voltage and percentage.
  *
- * Unlike the initial incarnations, the LCD routines are no longer included
- * in the project but instead are in a separate library.  In this way those
- * routines may be used by other projects by simply referencing the
- * library and header file in the new project.
+ * When S3 is pressed, the top line of the display is blanked. Pressing
+ * S3 again restores the display. LED 8 follows S3 and LED 7 follows
+ * the top display status.
  *
  * The application first sets the processor speed.  In main.c, there are
  * a number of configuration fuses set.  By default, these work reasonably
@@ -87,6 +86,7 @@
  *    "if(message>3)" [shape="diamond"];
  *    "if(analogRead)" [shape="diamond"];
  *    "if(different)" [shape="diamond"];
+ *    "if(dotext)" [shape="diamond"];
  *    "while(1)" [shape="trapezium"];
  *     Initialize -> "Clear LCD";
  *     "Clear LCD" -> "Wait";
@@ -95,7 +95,10 @@
  *     "while(1)" -> "if (dirty)";
  *       "if (dirty)" -> "if(analogRead)" [label="no"];
  *       "if (dirty)" -> "clear dirty" [label="yes"];
- *         "clear dirty" -> "show message";
+ *         "clear dirty" -> "clear display";
+ *         "clear display" -> "if(dotext)";
+ *         "if(dotext)"  -> "show message" [label="yes"];
+ *         "if(dotext)"  -> "if(analogRead)" [label="no"];
  *         "show message" -> "next message";
  *         "next message" -> "if(message>3)";
  *         "if(message>3)" -> "message=0" [label="yes"];

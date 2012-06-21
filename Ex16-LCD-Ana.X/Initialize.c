@@ -34,8 +34,11 @@
  * \li Sets the processor clock to 40 MHz
  * \li Initializes the ports
  * \li Initializes timer 6
+ * \li Initializes timer 5
  * \li Initialize the A/D converter
  * \li Initializes the dirty flag and message number
+ * \li Initializes analogRead and doText
+ * \li Ensures the left two LEDs are off
  */
 void Initialize( void )
 {
@@ -79,6 +82,12 @@ void Initialize( void )
     T6CON = 0x8030;         // 1:256 prescale, timer on, Clock Fcy
     IEC2bits.T6IE = 1;      // Enable Timer 6 interrupt
 
+    // Set timer 5 for pushbutton monitor
+    PR5 = 500;              // Timer 5 counter to 500
+    TMR5 = 0;               // Clear timer 5
+    T5CON = 0x8030;         // 1:256 prescale, timer on, Clock Fcy
+    IEC1bits.T5IE = 1;      // Enable Timer 6 interrupt
+
     // Initialize the LCD
     LCDinit();
 
@@ -107,11 +116,11 @@ void Initialize( void )
      /* turn on ADC module */
     AD1CON1bits.ADON = 1;
 
-
-
     // Initialize global variables
     dirty = 0;              // Message dirty flag
     message = 0;            // Current message number
     analogRead = 0;         // Set to A/D not read
+    doText = true;          // Start with text display
+    LED8 = LED7 = 0;
 
 }
