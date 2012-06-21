@@ -1,6 +1,6 @@
 /*! \file Tmr6Interrupt.c
  *
- * \brief Timer 6 interrupt service roiutine
+ * \brief Timer 6 interrupt service routine
  *
  * Whenever Timer 6 expires, this routine toggles the rightmost
  * 2 LEDs.  After 5 interrupts, it sets the dirty flag causing

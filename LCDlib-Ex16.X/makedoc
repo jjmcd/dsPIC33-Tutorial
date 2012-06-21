@@ -1,0 +1,4 @@
+#!/bin/sh
+doxygen LCDlib-Ex16.doxygen
+make -C doxygen/latex
+cp doxygen/latex/refman.pdf .

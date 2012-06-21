@@ -27,11 +27,14 @@
 #define EXTERN extern
 #include "Ex16-LCD-Ana.h"
 
-#include "lcd.h"
+#include "../LCDlib-Ex16.X/lcd.h"
 
 //! Initialization for Ex16-LCD-Ana
-/*! Initializes the ports and then initializes timer 6
- * Initializes the dirty flag and message number
+/*!
+ * \li Sets the processor clock to 40 MHz
+ * \li Initializes the ports
+ * \li Initializes timer 6
+ * \li Initializes the dirty flag and message number
  */
 void Initialize( void )
 {

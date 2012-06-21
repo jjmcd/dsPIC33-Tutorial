@@ -43,9 +43,20 @@
 
 #endif
 
+/*  This is cheating
+ *
+ * This is sort of a trick.  Global variables must be defined once,
+ * but anyplace they are used, they must be referenced as extern.  To
+ * simplify keeping track, globals are declared in the header file
+ * as EXTERN.  In the mainline, EXTERN is defined as nothing before
+ * the header is included.  In all other files, EXTERN is declared
+ * as extern.  This way all globals are created in the mainline but
+ * are visible to all the other routines.
+ */
 #define EXTERN
 #include "Ex16-LCD-Ana.h"
-#include "lcd.h"
+// Notice that the LCD header file is provided by the LCD library project
+#include "../LCDlib-Ex16.X/lcd.h"
 
 // Configuration fuses
 //
@@ -61,7 +72,7 @@ _FPOR( FPWRT_PWR64 );
 _FICD( ICS_PGD1 & JTAGEN_OFF );
 
 //! Table of messages to be displayed
-unsigned char szMessage[4][17] =
+char szMessage[4][17] =
 {
     "Message One     ",
     "msg num 2       ",
@@ -76,6 +87,8 @@ unsigned char szMessage[4][17] =
  * \code
  *   Initialize()
  *   Clear the LCD display
+ *   Delay one dirty flag cycle
+ *   Display a welcome message
  *   do forever
  *     if the dirty flag is set
  *       clear the dirty flag
@@ -95,8 +108,14 @@ int main(void)
     // Clear the screen
     LCDclear();
 
-    // Display a friendly warning mesage
-    LCDcountedstring((unsigned char *)"In Principio    erat Verbum ",28);
+    // Wait a while to pretend like we are thinking hard
+    dirty = 0;
+    while ( !dirty )
+        ;
+    dirty = 0;
+
+    // Display a friendly welcome mesage
+    LCDputs("In Principio    erat Verbum ");
 
     while (1)
     {
@@ -108,7 +127,7 @@ int main(void)
             // Clear the display
             LCDclear();
             // Display the current message
-            LCDcountedstring(szMessage[message],16);
+            LCDputs(szMessage[message]);
             // Point to the next message
             message++;
             // Position cursor to the middle of line 2

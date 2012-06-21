@@ -52,6 +52,9 @@ extern "C" {
 //! LCD data port direction register
 #define  LCD_DATATRIS  TRISE
 
+//! Toggle the LCD enable bit
+void LCDpulseEnableBit( void );
+
 #ifdef	__cplusplus
 }
 #endif

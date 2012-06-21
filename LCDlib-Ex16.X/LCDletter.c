@@ -30,17 +30,23 @@
 
 
 //! Send a character to the LCD
-void LCDletter( char data )        // subroutine for lcd data
+/*!  This routine simply sends a data byte to the LCD.  The
+ *   register select pin is set to 1 notifying the LCD that the
+ *   byte is to be used as a displayed character.
+ * \param data char - Character to send to the LCD
+ * \returns none
+ *
+ *   \todo This routine delays 400us after sending the byte.  Instead
+ *   the LCD busy flag should be checked before sending the byte.
+ *   All routines using delays, however, must follow this protocol
+ */
+void LCDletter( char data )
 {
     LCD_RW = 0; // ensure RW is 0
     LCD_RS = 1; // assert register select to 1
     LCD_DATA &= 0xFF00; // prepare RD0 - RD7
     LCD_DATA |= data; // data byte to lcd
-    LCD_ENABLE = 1;
-    Nop();
-    Nop();
-    Nop();
-    LCD_ENABLE = 0; // toggle E signal
+    LCDpulseEnableBit();
     LCD_RS = 0; // negate register select to 0
     Delay_Us(Delay200uS_count); // 200uS delay
     Delay_Us(Delay200uS_count); // 200uS delay

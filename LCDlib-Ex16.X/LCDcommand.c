@@ -29,17 +29,24 @@
 #include "delay.h"
 
 //! Send a command to the LCD
-void LCDcommand( char cmd )          // subroutiune for lcd commands
+/*!  This routine simple sends a data byte to the LCD.  The
+ *   register select pin is set to 0 notifying the LCD that the
+ *   byte is to be interpreted as a command.
+ *
+ * \param cmd char - Command byte to send to LCD
+ * \returns none
+ * 
+ *   \todo This routine delays 400us after sending the byte.  Instead
+ *   the LCD busy flag should be checked before sending the byte.
+ *   All routines using delays, however, must follow this protocol
+ */
+void LCDcommand( char cmd )
 {
     LCD_DATA &= 0xFF00; // prepare RD0 - RD7
     LCD_DATA |= cmd; // command byte to lcd
     LCD_RW = 0; // ensure RW is 0
     LCD_RS = 0;
-    LCD_ENABLE = 1; // toggle E line
-    Nop();
-    Nop();
-    Nop();
-    LCD_ENABLE = 0;
+    LCDpulseEnableBit();
     Delay(Delay_5mS_Cnt); // 5ms delay
 }
 

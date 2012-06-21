@@ -1,6 +1,6 @@
-/*! \file LCDcountedstring.c
+/*! \file LCDputs.c
  *
- *  \brief Send a specific number of characters to the LCD
+ *  \brief Put a string to the LCD
  *
  */
 
@@ -29,12 +29,16 @@
 #include "delay.h"
 
 
-//! Send a counted string to the LCD
-void LCDcountedstring( unsigned char *data, unsigned char count)
+//! Send a string to the LCD
+/*! Sends a null-terminated string to the LCD
+ * \param p char * - pointer to string to be displayed
+ * \returns none
+ */
+void LCDputs( char *p )
 {
-    while (count)
+    while (*p)
     {
-        LCDletter(*data++);
-        count--;
+        LCDletter(*p);
+        p++;
     }
 }

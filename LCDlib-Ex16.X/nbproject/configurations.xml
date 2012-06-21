@@ -4,8 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>Ex16-LCD-Ana.h</itemPath>
-      <itemPath>/home/jjmcd/Projects/PIC/dsPIC/LCDlib-Ex16.X/lcd.h</itemPath>
+      <itemPath>delay.h</itemPath>
+      <itemPath>lcd.h</itemPath>
+      <itemPath>lcd_intern.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -14,10 +15,13 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>main.c</itemPath>
-      <itemPath>Initialize.c</itemPath>
-      <itemPath>Tmr6Interrupt.c</itemPath>
-      <itemPath>00readme.c</itemPath>
+      <itemPath>delay.c</itemPath>
+      <itemPath>LCDcommand.c</itemPath>
+      <itemPath>LCDcountedstring.c</itemPath>
+      <itemPath>LCDinit.c</itemPath>
+      <itemPath>LCDletter.c</itemPath>
+      <itemPath>LCDputs.c</itemPath>
+      <itemPath>LCDpulseEnableBit.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -27,7 +31,7 @@
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
-    <conf name="default" type="2">
+    <conf name="default" type="3">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
         <targetDevice>dsPIC33FJ256GP710</targetDevice>
@@ -38,15 +42,8 @@
         <platform>2</platform>
       </toolsSet>
       <compileType>
-        <linkerTool>
-          <linkerLibItems>
-            <linkerLibFileItem>/home/jjmcd/Projects/PIC/dsPIC/LCDlib-Ex16.X/dist/default/production/LCDlib-Ex16.X.a</linkerLibFileItem>
-          </linkerLibItems>
-        </linkerTool>
-        <loading>
-          <useAlternateLoadableFile>false</useAlternateLoadableFile>
-          <alternateLoadableFile></alternateLoadableFile>
-        </loading>
+        <archiverTool>
+        </archiverTool>
       </compileType>
       <makeCustomizationType>
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>

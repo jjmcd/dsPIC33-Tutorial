@@ -41,11 +41,11 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/Initialize.o ${OBJECTDIR}/Tmr6Interrupt.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/LCDinit.o ${OBJECTDIR}/LCDcommand.o ${OBJECTDIR}/LCDletter.o ${OBJECTDIR}/LCDcountedstring.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/Initialize.o.d ${OBJECTDIR}/Tmr6Interrupt.o.d ${OBJECTDIR}/delay.o.d ${OBJECTDIR}/LCDinit.o.d ${OBJECTDIR}/LCDcommand.o.d ${OBJECTDIR}/LCDletter.o.d ${OBJECTDIR}/LCDcountedstring.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/Initialize.o ${OBJECTDIR}/Tmr6Interrupt.o ${OBJECTDIR}/00readme.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/Initialize.o.d ${OBJECTDIR}/Tmr6Interrupt.o.d ${OBJECTDIR}/00readme.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/Initialize.o ${OBJECTDIR}/Tmr6Interrupt.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/LCDinit.o ${OBJECTDIR}/LCDcommand.o ${OBJECTDIR}/LCDletter.o ${OBJECTDIR}/LCDcountedstring.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/Initialize.o ${OBJECTDIR}/Tmr6Interrupt.o ${OBJECTDIR}/00readme.o
 
 
 CFLAGS=
@@ -99,35 +99,11 @@ ${OBJECTDIR}/Tmr6Interrupt.o: Tmr6Interrupt.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/Tmr6Interrupt.o.ok ${OBJECTDIR}/Tmr6Interrupt.o.err 
 	@${FIXDEPS} "${OBJECTDIR}/Tmr6Interrupt.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Tmr6Interrupt.o.d" -o ${OBJECTDIR}/Tmr6Interrupt.o Tmr6Interrupt.c  
 	
-${OBJECTDIR}/delay.o: delay.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/00readme.o: 00readme.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/delay.o.d 
-	@${RM} ${OBJECTDIR}/delay.o.ok ${OBJECTDIR}/delay.o.err 
-	@${FIXDEPS} "${OBJECTDIR}/delay.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/delay.o.d" -o ${OBJECTDIR}/delay.o delay.c  
-	
-${OBJECTDIR}/LCDinit.o: LCDinit.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/LCDinit.o.d 
-	@${RM} ${OBJECTDIR}/LCDinit.o.ok ${OBJECTDIR}/LCDinit.o.err 
-	@${FIXDEPS} "${OBJECTDIR}/LCDinit.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/LCDinit.o.d" -o ${OBJECTDIR}/LCDinit.o LCDinit.c  
-	
-${OBJECTDIR}/LCDcommand.o: LCDcommand.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/LCDcommand.o.d 
-	@${RM} ${OBJECTDIR}/LCDcommand.o.ok ${OBJECTDIR}/LCDcommand.o.err 
-	@${FIXDEPS} "${OBJECTDIR}/LCDcommand.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/LCDcommand.o.d" -o ${OBJECTDIR}/LCDcommand.o LCDcommand.c  
-	
-${OBJECTDIR}/LCDletter.o: LCDletter.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/LCDletter.o.d 
-	@${RM} ${OBJECTDIR}/LCDletter.o.ok ${OBJECTDIR}/LCDletter.o.err 
-	@${FIXDEPS} "${OBJECTDIR}/LCDletter.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/LCDletter.o.d" -o ${OBJECTDIR}/LCDletter.o LCDletter.c  
-	
-${OBJECTDIR}/LCDcountedstring.o: LCDcountedstring.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/LCDcountedstring.o.d 
-	@${RM} ${OBJECTDIR}/LCDcountedstring.o.ok ${OBJECTDIR}/LCDcountedstring.o.err 
-	@${FIXDEPS} "${OBJECTDIR}/LCDcountedstring.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/LCDcountedstring.o.d" -o ${OBJECTDIR}/LCDcountedstring.o LCDcountedstring.c  
+	@${RM} ${OBJECTDIR}/00readme.o.d 
+	@${RM} ${OBJECTDIR}/00readme.o.ok ${OBJECTDIR}/00readme.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/00readme.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/00readme.o.d" -o ${OBJECTDIR}/00readme.o 00readme.c  
 	
 else
 ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
@@ -148,48 +124,24 @@ ${OBJECTDIR}/Tmr6Interrupt.o: Tmr6Interrupt.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/Tmr6Interrupt.o.ok ${OBJECTDIR}/Tmr6Interrupt.o.err 
 	@${FIXDEPS} "${OBJECTDIR}/Tmr6Interrupt.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE)  -g -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Tmr6Interrupt.o.d" -o ${OBJECTDIR}/Tmr6Interrupt.o Tmr6Interrupt.c  
 	
-${OBJECTDIR}/delay.o: delay.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/00readme.o: 00readme.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/delay.o.d 
-	@${RM} ${OBJECTDIR}/delay.o.ok ${OBJECTDIR}/delay.o.err 
-	@${FIXDEPS} "${OBJECTDIR}/delay.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE)  -g -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/delay.o.d" -o ${OBJECTDIR}/delay.o delay.c  
-	
-${OBJECTDIR}/LCDinit.o: LCDinit.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/LCDinit.o.d 
-	@${RM} ${OBJECTDIR}/LCDinit.o.ok ${OBJECTDIR}/LCDinit.o.err 
-	@${FIXDEPS} "${OBJECTDIR}/LCDinit.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE)  -g -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/LCDinit.o.d" -o ${OBJECTDIR}/LCDinit.o LCDinit.c  
-	
-${OBJECTDIR}/LCDcommand.o: LCDcommand.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/LCDcommand.o.d 
-	@${RM} ${OBJECTDIR}/LCDcommand.o.ok ${OBJECTDIR}/LCDcommand.o.err 
-	@${FIXDEPS} "${OBJECTDIR}/LCDcommand.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE)  -g -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/LCDcommand.o.d" -o ${OBJECTDIR}/LCDcommand.o LCDcommand.c  
-	
-${OBJECTDIR}/LCDletter.o: LCDletter.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/LCDletter.o.d 
-	@${RM} ${OBJECTDIR}/LCDletter.o.ok ${OBJECTDIR}/LCDletter.o.err 
-	@${FIXDEPS} "${OBJECTDIR}/LCDletter.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE)  -g -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/LCDletter.o.d" -o ${OBJECTDIR}/LCDletter.o LCDletter.c  
-	
-${OBJECTDIR}/LCDcountedstring.o: LCDcountedstring.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/LCDcountedstring.o.d 
-	@${RM} ${OBJECTDIR}/LCDcountedstring.o.ok ${OBJECTDIR}/LCDcountedstring.o.err 
-	@${FIXDEPS} "${OBJECTDIR}/LCDcountedstring.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE)  -g -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/LCDcountedstring.o.d" -o ${OBJECTDIR}/LCDcountedstring.o LCDcountedstring.c  
+	@${RM} ${OBJECTDIR}/00readme.o.d 
+	@${RM} ${OBJECTDIR}/00readme.o.ok ${OBJECTDIR}/00readme.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/00readme.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE)  -g -omf=elf -x c -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/00readme.o.d" -o ${OBJECTDIR}/00readme.o 00readme.c  
 	
 endif
 
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-dist/${CND_CONF}/${IMAGE_TYPE}/Ex16-LCD-Ana.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
+dist/${CND_CONF}/${IMAGE_TYPE}/Ex16-LCD-Ana.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk  /home/jjmcd/Projects/PIC/dsPIC/LCDlib-Ex16.X/dist/default/production/LCDlib-Ex16.X.a 
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -omf=elf -mcpu=$(MP_PROCESSOR_OPTION)  -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -o dist/${CND_CONF}/${IMAGE_TYPE}/Ex16-LCD-Ana.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}       -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__ICD2RAM=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_ICD3=1
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -omf=elf -mcpu=$(MP_PROCESSOR_OPTION)  -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -o dist/${CND_CONF}/${IMAGE_TYPE}/Ex16-LCD-Ana.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}   /home/jjmcd/Projects/PIC/dsPIC/LCDlib-Ex16.X/dist/default/production/LCDlib-Ex16.X.a    -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__ICD2RAM=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_ICD3=1
 else
-dist/${CND_CONF}/${IMAGE_TYPE}/Ex16-LCD-Ana.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
+dist/${CND_CONF}/${IMAGE_TYPE}/Ex16-LCD-Ana.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk  /home/jjmcd/Projects/PIC/dsPIC/LCDlib-Ex16.X/dist/default/production/LCDlib-Ex16.X.a 
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -omf=elf -mcpu=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Ex16-LCD-Ana.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}       -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION)
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -omf=elf -mcpu=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/Ex16-LCD-Ana.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}   /home/jjmcd/Projects/PIC/dsPIC/LCDlib-Ex16.X/dist/default/production/LCDlib-Ex16.X.a    -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION)
 	${MP_CC_DIR}/pic30-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/Ex16-LCD-Ana.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} -omf=elf
 endif
 
