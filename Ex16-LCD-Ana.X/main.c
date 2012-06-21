@@ -6,8 +6,9 @@
  * and the LCD.  A flag is passed from the ISR to the mainline
  * to indicate time to update the display.
  *
- * A second line of the display contains the message number,
- * to demonstrate LCD cursor positioning.
+ * A second line of the display shows the potentiometer position, in
+ * both voltage and percentage.  The second display line is updated
+ * far faster than the top line, providing the value changes.
  *
  * Pressing S3 toggles the first line of the display on and off.
  *
