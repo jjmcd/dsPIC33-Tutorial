@@ -1,0 +1,23 @@
+graph dirs
+{
+	node [ style="filled" fontname="Helvetica" fillcolor="honeydew"];
+	"LCDlib-Ex16.X" [ fontname="Helvetica-Bold" ];
+	"Proj Dir" -- "Ex16-LCD-Ana.X";
+	"Proj Dir" -- "LCDlib-Ex16.X";
+	A [label="build"];
+	B [label="dist"];
+	C [label="doxygen"];
+	D [label="nbproject"];
+	E [label="build"];
+	F [label="dist"];
+	G [label="doxygen"];
+	H [label="nbproject"];
+	"Ex16-LCD-Ana.X" -- A;
+	"Ex16-LCD-Ana.X" -- B;
+	"Ex16-LCD-Ana.X" -- C;
+	"Ex16-LCD-Ana.X" -- D;
+	"LCDlib-Ex16.X" -- E;
+	"LCDlib-Ex16.X" -- F;
+	"LCDlib-Ex16.X" -- G;
+	"LCDlib-Ex16.X" -- H;
+}
