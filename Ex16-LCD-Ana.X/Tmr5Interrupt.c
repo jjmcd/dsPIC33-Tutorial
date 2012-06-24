@@ -69,13 +69,12 @@ int last;
  */
 void __attribute__((__interrupt__, auto_psv)) _T5Interrupt( void )
 {
-    IFS1bits.T5IF = 0;              // Clear timer interrupt flag
-                                    // This is always the first order of
-                                    // business in an interrupt routine
+    IFS1bits.T5IF = 0;              // Clear timer 5 interrupt flag
 
     LED8 = !PB3;                    // LED8 follows PB3
 
-    if ( !PB3 )                     // PB3 depressed
+    // Debouncing code
+    if ( !PB3 )                     // If S3 is depressed
     {
         onCount++;                  // Count up time pressed
         offCount = 0;               // and reset un-pressed count
@@ -90,5 +89,6 @@ void __attribute__((__interrupt__, auto_psv)) _T5Interrupt( void )
                 onCount = 0;        // Reset pressed count
             }
     }
+
     LED7 = !doText;                 // LED7 follows text display state
 }

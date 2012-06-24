@@ -5,7 +5,8 @@
  * This project toggles the LEDs on the timer and displays multiple
  * messages on the first line of the LCD.  The potentiometer on the
  * Explorer 16 is read, and the value is displayed on the second
- * line, in both a voltage and percentage.
+ * line, in both a voltage and percentage.  As the pot is adjusted
+ * the brightness of an LED on the PICtail plus varies.
  *
  * When S3 is pressed, the top line of the display is blanked. Pressing
  * S3 again restores the display. LED 8 follows S3 and LED 7 follows
@@ -71,7 +72,6 @@
  * \c CLKDIV has a number of fields which allow the peripheral clock to be
  * set slower than the instruction clock in some situations.  These fields
  * are not used, and are set to zero which essentially disables this feature.
- *
  * \dot
  * digraph mainflo
  * {
@@ -111,8 +111,21 @@
  *     "if(different)" -> "Remember potValue" [label="yes"];
  *     "Remember potValue" -> "Create string";
  *     "Create string" -> "Display string";
- *     "Display string" -> "while(1)";
+ *     "Display string" -> "Set PWM Duty Cycle";
+ *     "Set PWM Duty Cycle" -> "while(1)";
  * }
  * \enddot
+ *
+ * \image latex "RD2-OC3.png" "PICtail schematic" width=10cm
+ *
+ * The PWM demo requires that the user add an LED to a PICtail Plus
+ * prototyping board.  The resistor value is selected based on the
+ * color of the LED chosen (typically ~100 ohm).
+ *
+ * \image latex "pscn2279.jpg" "Explorer 16 display" width=10cm
+ *
+ * The above display is shown following a welcome message.  The first
+ * line changes about every 2 seconds.  The second line changes whenever
+ * R6 is adjusted.
  *
  */

@@ -2,6 +2,9 @@
  *
  * \brief Initialization for Ex16-LCD-Ana
  *
+ * First initializes the ports, then the timers, then the PWM port,
+ * then the A/D converter and finally the global variables.
+ *
  * */
 
 #if defined(__PIC24E__)
@@ -35,6 +38,8 @@
  * \li Initializes the ports
  * \li Initializes timer 6
  * \li Initializes timer 5
+ * \li Initializes timer 3
+ * \li Sets OC3 to PWM using timer 3
  * \li Initialize the A/D converter
  * \li Initializes the dirty flag and message number
  * \li Initializes analogRead and doText
@@ -71,6 +76,7 @@ void Initialize( void )
 
     TRISA = 0;              // All PORTA pins outputs
     LATA = 0x0001;          // Right LED on
+    TRISD &= 0xfffb;        // POTD:1,2 outputs
 
     // Set timer 6 for right LED
     // Explanation ...
@@ -88,7 +94,15 @@ void Initialize( void )
     T5CON = 0x8030;         // 1:256 prescale, timer on, Clock Fcy
     IEC1bits.T5IE = 1;      // Enable Timer 6 interrupt
 
-    // Initialize the LCD
+    // Set up PWM on OC3 (RD2)
+    TMR3 = 0;               // Clear timer 3
+    PR3 = 1000;             // Timer 3 counter to 1000
+    OC3RS = 1024;           // PWM 3 duty cycle
+    OC3R = 0;               //
+    OC3CON = 0xe;           // Set OC3 to PWM mode, timer 3
+    T3CON = 0x8010;         // Fosc/4, 1:4 prescale, start TMR3
+
+  // Initialize the LCD
     LCDinit();
 
     // Initialize ADC
@@ -121,6 +135,7 @@ void Initialize( void )
     message = 0;            // Current message number
     analogRead = 0;         // Set to A/D not read
     doText = true;          // Start with text display
+    auxLEDs = 0;            // LED counter zero
     LED8 = LED7 = 0;
 
 }

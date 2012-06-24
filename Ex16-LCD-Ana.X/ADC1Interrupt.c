@@ -1,10 +1,14 @@
 /*! \file ADC1Interrupt.c
-
- \brief Interrupt service routine for the Analog to Digital converter
-
- This file provides the (very simple) ISR that is executed
- whenever an analog conversion has completed.
-*/
+ *
+ * \brief Interrupt service routine for the Analog to Digital converter
+ *
+ * This file provides the (very simple) ISR that is executed
+ * whenever an analog conversion has completed.
+ *
+ * The analog value is saved and a counter is incremented to
+ * advise the mainline that  a new value is available.
+ * 
+ */
 #include <p33Fxxxx.h>
 
 #define EXTERN extern
@@ -12,12 +16,11 @@
 
 //! ADC1 Interrupt Service Routine
 /*!
-  Pseudocode:
-  \code
-    Clear the interrupt flag
-    Grab the analog value and store it in potValue
-    increment analogRead
-  \endcode
+ * Whenever an analog value is available, thie routine will:
+ * \li Clear the interrupt flag
+ * \li Grab the analog value and store it in potValue
+ * \li Increment analogRead
+ *
 */
 void __attribute__((__interrupt__, auto_psv)) _ADC1Interrupt( void )
 {

@@ -1,0 +1,30 @@
+v 20110115 2
+C 42100 51000 1 0 0 led-1.sym
+{
+T 42900 51600 5 10 0 0 0 0 1
+device=LED
+T 42300 50800 5 10 1 1 0 0 1
+refdes=LED1
+T 42900 51800 5 10 0 0 0 0 1
+symversion=0.1
+}
+C 41200 51100 1 0 0 resistor-1.sym
+{
+T 41500 51500 5 10 0 0 0 0 1
+device=RESISTOR
+T 41400 50900 5 10 1 1 0 0 1
+refdes=R1
+}
+C 41000 51400 1 0 0 3.3V-plus-1.sym
+C 43900 51300 1 180 0 terminal-1.sym
+{
+T 43590 50550 5 10 0 0 180 0 1
+device=terminal
+T 43590 50700 5 10 0 0 180 0 1
+footprint=CONNECTOR 1 1
+T 43250 51050 5 10 1 1 180 6 1
+refdes=RD2
+}
+N 41200 51400 41200 51200 4
+T 41400 50500 9 10 1 0 0 0 1
+PICtail Plus Protoboard

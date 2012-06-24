@@ -3,7 +3,7 @@
  * \brief Timer 6 interrupt service routine
  *
  * Whenever Timer 6 expires, this routine toggles the rightmost
- * 2 LEDs.  After 5 interrupts, it sets the dirty flag causing
+ * 2 LEDs.  After 6 interrupts, it sets the dirty flag causing
  * the mainline to display a new message on the LCD.
  * 
  */
@@ -60,4 +60,8 @@ void __attribute__((__interrupt__, auto_psv)) _T6Interrupt( void )
         dirty = 1;          // Set the dirty flag
         delayCount = 0;     // Reset the delayCount
     }
+    //auxLEDs++;
+    //auxLEDs &= 0x0007;
+    //LATD = (LATD & 0xfffd) | auxLEDs;
+//    LATD ^= 0x0046;
 }

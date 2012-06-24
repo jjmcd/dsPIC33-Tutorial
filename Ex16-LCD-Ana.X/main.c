@@ -12,6 +12,9 @@
  *
  * Pressing S3 toggles the first line of the display on and off.
  *
+ * An LED on the proto board connected to RD2 will vary in
+ * brightness depending on the pot position.
+ *
  * File:   main.c
  * Author: jjmcd
  *
@@ -47,6 +50,7 @@
 #endif
 
 #include <stdio.h>
+#include <stdlib.h>
 
 
 /*  This is cheating
@@ -117,6 +121,7 @@ char szMessage[9][17] =
  *         Set oldValue to potValue
  *         Create a string containing voltage and percentage
  *         display the string on the second line
+ *         Set OC3 (RD2) duty cycle depending on potValue
  * \endcode
  */
 int main(void)
@@ -187,6 +192,9 @@ int main(void)
                 // Position to the second line and write string to LCD
                 LCDposition( 0x40+1 );
                 LCDputs(szValue);
+                // Set OC3 (LED on proto) brightness.  LED is pulled
+                // up so zero duty cycle = full brightness
+                OC3RS = 1024 - potValue / 4;
             }
         }
         

@@ -27,6 +27,8 @@ EXTERN unsigned int potValue;
 EXTERN unsigned int analogRead;
 //! Indicate whether to display text message
 EXTERN bool doText;
+//! Temp counter for proto board LEDs
+EXTERN int auxLEDs;
 
 // Macros for various devices
 //! Leftmost LED latch
