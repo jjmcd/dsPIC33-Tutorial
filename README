@@ -1,2 +1,10 @@
 This is a small tutorial on PIC programming in C.  Each of the
 branches represents an additional step in the same application.
+
+Branch   Does
+Ex1     Flash LEDs using timer
+Ex2     Display on LCD while flashing LEDs
+Ex3     Move LCD routines to separate library
+Ex4     Read analog and display
+Ex5     Use pushbuttons to change display
+Ex6     Adjust LED brightness based on pot
