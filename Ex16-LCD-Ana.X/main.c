@@ -137,7 +137,9 @@ int main(void)
     dirty = 0;
 
     // Display a friendly welcome mesage
-    LCDputs(" To disable top  line press S3 ");
+    LCDputs(" To disable top  ");
+    LCDposition( 0x41 );
+    LCDputs("line press S3 ");
 
     //Hold off initial analog display until ready to clear welcome message
     while ( !dirty )
